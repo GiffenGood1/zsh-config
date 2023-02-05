@@ -90,11 +90,16 @@ eval "$(starship init zsh)"
 # Needs to be at end of file
 zit-il "https://github.com/zsh-users/zsh-syntax-highlighting" "plugins/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
-sync_zshrc() {
-  git -C "${ZDOTDIR}" pull
-  git -C "${ZDOTDIR}" add .zshrc
-  git -C "${ZDOTDIR}" commit -m "Sync .zshrc"
-  git -C "${ZDOTDIR}" push
+sync-zshrc() {
+  git -C "${ZSH}" pull
+  git -C "${ZSH}" add .zshrc
+  changes=$(git -C "${ZSH}" diff-index --quiet HEAD --)
+  if [ $? -eq 1 ]; then
+    git -C "${ZSH}" commit -m "Sync .zshrc"
+    git -C "${ZSH}" push
+  else
+    echo "No changes found in .zshrc"
+  fi
 }
 
 
