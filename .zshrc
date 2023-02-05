@@ -91,12 +91,12 @@ eval "$(starship init zsh)"
 zit-il "https://github.com/zsh-users/zsh-syntax-highlighting" "plugins/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
 sync-zshrc() {
-  git -C "${ZSH}" pull
-  git -C "${ZSH}" add .zshrc
-  changes=$(git -C "${ZSH}" diff-index --quiet HEAD --)
+  git -C "${ZDOTDIR}" pull
+  git -C "${ZDOTDIR}" add .zshrc
+  changes=$(git -C "${ZDOTDIR}" diff-index --quiet HEAD --)
   if [ $? -eq 1 ]; then
-    git -C "${ZSH}" commit -m "Sync .zshrc"
-    git -C "${ZSH}" push
+    git -C "${ZDOTDIR}" commit -m "Sync .zshrc"
+    git -C "${ZDOTDIR}" push
   else
     echo "No changes found in .zshrc"
   fi
