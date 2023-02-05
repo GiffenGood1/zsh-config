@@ -1,0 +1,4 @@
+zit/plugins
+.zsh_sessions
+.zcompdump
+*.zwc
