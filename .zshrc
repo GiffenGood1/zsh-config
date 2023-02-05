@@ -90,6 +90,14 @@ eval "$(starship init zsh)"
 # Needs to be at end of file
 zit-il "https://github.com/zsh-users/zsh-syntax-highlighting" "plugins/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
+sync_zshrc() {
+  git -C "${ZDOTDIR}" pull
+  git -C "${ZDOTDIR}" add .zshrc
+  git -C "${ZDOTDIR}" commit -m "Sync .zshrc"
+  git -C "${ZDOTDIR}" push
+}
+
+
 # script to compile ZSH files and speed-up loading
 # should be called last
 zit-lo "/" "compile-zsh-files.zsh"
