@@ -42,7 +42,7 @@ unsetopt BEEP
 HISTSIZE=5000               #How many lines of history to keep in memory
 HISTFILE=${ZDOTDIR}/.zsh_history     #Where to save history to disk
 SAVEHIST=500000               #Number of history entries to save to disk
-# HISTDUP=erase               #Erase duplicates in the history file
+HISTDUP=erase               #Erase duplicates in the history file
 unsetopt EXTENDED_HISTORY
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
