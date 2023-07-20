@@ -42,11 +42,12 @@ unsetopt BEEP
 HISTSIZE=5000               #How many lines of history to keep in memory
 HISTFILE=${ZDOTDIR}/.zsh_history     #Where to save history to disk
 SAVEHIST=500000               #Number of history entries to save to disk
-HISTDUP=erase               #Erase duplicates in the history file
+# HISTDUP=erase               #Erase duplicates in the history file
 unsetopt EXTENDED_HISTORY
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+setopt    hist_ignore_all_dups  #Erase duplicates in the history file
 
 # Source Zit file
 source "${ZIT_MODULES_PATH}/zit.zsh"
@@ -66,6 +67,8 @@ alias ls="ls -lhaG --color=always"
 # alias la = "!git config -l | grep alias | cut -c 7-"
 alias code="vs"
 alias reload="exec $SHELL"
+alias python='python3'
+alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
 
 # BINDS
 
@@ -99,6 +102,21 @@ sync-zshrc() {
     git -C "${ZDOTDIR}" push
   else
     echo "No changes found in .zshrc"
+  fi
+}
+
+function npm() {
+  if [[ "$1" == "run" && "$2" == deploy* ]]; then
+    read -q "response?Are you sure you want to deploy? (y/n) "
+    echo
+    if [[ "$response" == "y" ]]; then
+      command npm "$@"
+    else
+      echo "Deployment canceled."
+    fi
+  else
+    # If it's not an npm run deploy command, run the original npm command
+    command npm "$@"
   fi
 }
 
