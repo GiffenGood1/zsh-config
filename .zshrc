@@ -9,6 +9,14 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# pnpm
+export PNPM_HOME="/Users/matthews/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # UNCOMMENT TO ENABLE AUTO NODE VERSION SWITCHING 
 
 # autoload -U add-zsh-hook
@@ -68,7 +76,9 @@ alias ls="ls -lhaG --color=always"
 alias code="vs"
 alias reload="exec $SHELL"
 alias python='python3'
+alias vim="nvim"
 alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
+alias ppp="node ~/productive-pppp-app/index.js"
 
 # BINDS
 
@@ -102,21 +112,6 @@ sync-zshrc() {
     git -C "${ZDOTDIR}" push
   else
     echo "No changes found in .zshrc"
-  fi
-}
-
-function npm() {
-  if [[ "$1" == "run" && "$2" == deploy* ]]; then
-    read -q "response?Are you sure you want to deploy? (y/n) "
-    echo
-    if [[ "$response" == "y" ]]; then
-      command npm "$@"
-    else
-      echo "Deployment canceled."
-    fi
-  else
-    # If it's not an npm run deploy command, run the original npm command
-    command npm "$@"
   fi
 }
 
