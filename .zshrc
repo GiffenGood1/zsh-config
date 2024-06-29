@@ -58,7 +58,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux specific configuration goes here
   alias ls="ls -lha --color=always"
-  alias apt="nala"
+
+  # check if nala is installed if so alias apt-get and apt to nala
+  if [ -x "$(command -v nala)" ]; then
+    alias apt-get="nala"
+    alias apt="nala"
+  fi
 fi
 
 ############################# SSH specific configuration #############################
