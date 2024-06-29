@@ -93,7 +93,10 @@ zit-il "https://github.com/zsh-users/zsh-completions" "plugins/zsh-completions" 
 zit-il "https://github.com/hcgraf/zsh-sudo" "plugins/sudo" "sudo.plugin.zsh"
 
 eval "$(zoxide init zsh)"
-source <(fzf --zsh)
+
+# For fzf key bindings
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source <(fzf --zsh)
 
 ############################# GLOBAL ALIAS #############################
 alias reload="exec $SHELL"
