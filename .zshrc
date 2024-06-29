@@ -48,7 +48,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # load-nvmrc
 
   # ALIAS
-  
+  alias ls="ls -lhaG --color=always"
   alias code="vs"
   alias python='python3'
   alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 ############################# Linux specific configuration #############################
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux specific configuration goes here
-
+  alias ls="ls -lha"
   alias apt="nala"
 fi
 
@@ -96,7 +96,6 @@ eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
 ############################# GLOBAL ALIAS #############################
-alias ls="ls -lhaG --color=always"
 alias reload="exec $SHELL"
 alias vim="nvim"
 alias cd="z"
