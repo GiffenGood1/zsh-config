@@ -3,3 +3,4 @@ zit/plugins
 .zcompdump
 .zsh_history
 *.zwc
+*.swp
