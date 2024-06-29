@@ -54,9 +54,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
   alias ppp="node ~/productive-pppp-app/index.js"
 
+  # For fzf key bindings
+  source <(fzf --zsh)
+
 ############################# Linux specific configuration #############################
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux specific configuration goes here
+
+  # For fzf key bindings
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+
   alias ls="ls -lha --color=always"
 
   # check if nala is installed if so alias apt-get and apt to nala
@@ -98,10 +105,6 @@ zit-il "https://github.com/zsh-users/zsh-completions" "plugins/zsh-completions" 
 zit-il "https://github.com/hcgraf/zsh-sudo" "plugins/sudo" "sudo.plugin.zsh"
 
 eval "$(zoxide init zsh)"
-
-# For fzf key bindings
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-# source <(fzf --zsh)
 
 ############################# GLOBAL ALIAS #############################
 alias reload="exec $SHELL"
