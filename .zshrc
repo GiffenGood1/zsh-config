@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 ############################# Linux specific configuration #############################
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux specific configuration goes here
-  alias ls="ls -lha"
+  alias ls="ls -lha --color=always"
   alias apt="nala"
 fi
 
