@@ -47,6 +47,22 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # add-zsh-hook chpwd load-nvmrc
   # load-nvmrc
 
+
+  # Alert system for long running tasks/scripts
+  # usage example: alert long_running_task.sh
+  
+function alert() {
+  "$@"
+  if [ $? -eq 0 ]; then
+    say "Task complete"
+    osascript -e 'display notification "Task finished" with title "Terminal"'
+  else
+    say "Task failed"
+    osascript -e 'display notification "Task failed" with title "Terminal"'
+  fi
+}
+
+
   # ALIAS
   alias ls="ls -lhaG --color=always"
   alias code="vs"
