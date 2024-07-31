@@ -48,19 +48,31 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # load-nvmrc
 
 
-  # Alert system for long running tasks/scripts
-  # usage example: alert long_running_task.sh
-  
+# Alert system for long running tasks/scripts
+# usage example: alert long_running_task.sh
 function alert() {
+  SECONDS=0
   "$@"
+  duration=$SECONDS
+  hours=$((duration / 3600))
+  minutes=$(( (duration % 3600) / 60 ))
+  seconds=$((duration % 60))
   if [ $? -eq 0 ]; then
-    say "Task complete"
-    osascript -e 'display notification "Task finished" with title "Terminal"'
+    say "Finished hacking the NSA in $hours hours, $minutes minutes, and $seconds seconds, Good job"
+    osascript -e 'display notification "Task finished in '"$hours"' hours, '"$minutes"' minutes, and '"$seconds"' seconds" with title "Terminal"'
   else
-    say "Task failed"
-    osascript -e 'display notification "Task failed" with title "Terminal"'
+    say "Hack failed in $hours hours, $minutes minutes, and $seconds seconds, Good job"
+    osascript -e 'display notification "Task finished in '"$hours"' hours, '"$minutes"' minutes, and '"$seconds"' seconds" with title "Terminal"'
   fi
 }
+
+insert_alert() {
+  BUFFER="alert $BUFFER"
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N insert_alert
+bindkey '^e' insert_alert
 
 
   # ALIAS
