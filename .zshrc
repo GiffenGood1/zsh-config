@@ -93,6 +93,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 
   alias ls="ls -lha --color=always"
+  alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
 
   # check if nala is installed if so alias apt-get and apt to nala
   if [ -x "$(command -v nala)" ]; then
@@ -116,10 +117,10 @@ HISTFILE=${ZDOTDIR}/.zsh_history     #Where to save history to disk
 SAVEHIST=500000               #Number of history entries to save to disk
 # HISTDUP=erase               #Erase duplicates in the history file
 unsetopt EXTENDED_HISTORY
-setopt    appendhistory     #Append history to the history file (no overwriting)
-setopt    sharehistory      #Share history across terminals
-setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
-setopt    hist_ignore_all_dups  #Erase duplicates in the history file
+setopt appendhistory     #Append history to the history file (no overwriting)
+setopt sharehistory      #Share history across terminals
+setopt incappendhistory  #Immediately append to the history file, not just when a term is killed
+setopt hist_ignore_all_dups  #Erase duplicates in the history file
 
 ############################# Plugin configuration #############################
 # Source Zit file
