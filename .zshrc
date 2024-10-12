@@ -139,6 +139,7 @@ eval "$(zoxide init zsh)"
 alias reload="exec $SHELL"
 alias vim="nvim"
 alias cd="z"
+alias lzd='lazydocker'
 
 
 ############################# OTHER CONFIG #############################
