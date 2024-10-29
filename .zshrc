@@ -81,6 +81,8 @@ bindkey '^e' insert_alert
   alias python='python3'
   alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
   alias ppp="node ~/productive-pppp-app/index.js"
+  alias dns-home="networksetup -setdnsservers Wi-Fi empty"
+  alias dns-cloud="networksetup -setdnsservers Wi-Fi 1.1.1.1"
 
   # For fzf key bindings
   source <(fzf --zsh)
