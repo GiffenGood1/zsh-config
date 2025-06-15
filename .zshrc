@@ -4,17 +4,20 @@ export ZIT_MODULES_PATH="${ZDOTDIR}/zit"
 export PATH=$HOME/.local/bin:$PATH
 
 
+
 ############################# Mac OS X specific configuration #############################
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # EXPORTS
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
   export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
   export NVM_DIR="$HOME/.nvm"
     [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-  source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc"
-  source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
+  # source "/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc"
+  # source "/opt/homebrew/share/google-cloud-sdk/path.zsh.inc"
 
   # pnpm
   export PNPM_HOME="/Users/matthews/Library/pnpm"
@@ -95,7 +98,8 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   source /usr/share/doc/fzf/examples/key-bindings.zsh
 
   alias ls="ls -lha --color=always"
-  alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
+  alias ytdl="yt-dlp --cookies '~/ytdlp-cookies.txt' -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
+  alias ytdl-playlist="yt-dlp --cookies '~/ytdlp-cookies.txt' -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]' --yes-playlist"
 
   # check if nala is installed if so alias apt-get and apt to nala
   if [ -x "$(command -v nala)" ]; then
@@ -142,6 +146,8 @@ alias reload="exec $SHELL"
 alias vim="nvim"
 alias cd="z"
 alias lzd='lazydocker'
+# alias for mkdir and cd into it
+alias mkd='() { mkdir -p "$1" && cd "$1"; }'
 
 
 ############################# OTHER CONFIG #############################
