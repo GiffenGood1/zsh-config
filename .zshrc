@@ -83,9 +83,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias code="vs"
   alias python='python3'
   alias ytdl="yt-dlp -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
-  alias ppp="node ~/productive-pppp-app/index.js"
-  alias dns-home="networksetup -setdnsservers Wi-Fi empty"
+  alias ppp="node ~/scripts/dotcollective/productive-pppp-app/index.js"
+  alias dns-home="networksetup -setdnsservers Wi-Fi 192.168.68.100"
   alias dns-cloud="networksetup -setdnsservers Wi-Fi 1.1.1.1"
+  alias create-pr='gh pr create --web --title "$(git branch --show-current)"'
+
+  alias clean-branch="git checkout main && git pull"
+
 
   # For fzf key bindings
   source <(fzf --zsh)
@@ -191,3 +195,8 @@ zit-lo "/" "compile-zsh-files.zsh"
 
 
 # zprof # bottom of .zshrc
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/matthewdotcollective/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
