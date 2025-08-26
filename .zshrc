@@ -100,6 +100,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias ls="ls -lha --color=always"
   alias ytdl="yt-dlp --cookies '~/ytdlp-cookies.txt' -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]'"
   alias ytdl-playlist="yt-dlp --cookies '~/ytdlp-cookies.txt' -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[height<=1080][ext=mp4]' --yes-playlist"
+  alias du="ncdu"
 
   # check if nala is installed if so alias apt-get and apt to nala
   if [ -x "$(command -v nala)" ]; then
